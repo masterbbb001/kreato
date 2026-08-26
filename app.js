@@ -1,16 +1,15 @@
 function generatePPTX() {
-    // PptxGenJS ob'ektini yaratish
     let pptx = new PptxGenJS();
 
-    // Kiritilgan ma'lumotlarni olish
+    // Inputlardan ma'lumotlarni olish
     let inputs = document.querySelectorAll('input');
     let topic = inputs[0] && inputs[0].value.trim() !== "" ? inputs[0].value : "Taqdimot";
     let author = inputs[1] && inputs[1].value.trim() !== "" ? inputs[1].value : "Muallif";
 
-    // 16:9 slayd formati
-    pptx.layout = 'LAYOUT_169';
+    // Standard 16:9 ekran formati
+    pptx.layout = 'LAYOUT_16x9';
 
-    // 1-SLAYD: Muqova
+    // 1-SLAYD: Titul (Muqova)
     let slide1 = pptx.addSlide();
     slide1.addShape('rect', { x: 0, y: 0, w: '100%', h: '100%', fill: { color: '0F172A' } });
 
@@ -40,6 +39,6 @@ function generatePPTX() {
         fontSize: 20, color: 'E2E8F0', lineSpacing: 32, fontFace: 'Calibri'
     });
 
-    // Faylni kompyuterga saqlash
+    // Taqdimotni yuklab olish
     pptx.writeFile({ fileName: `${topic}.pptx` });
 }
