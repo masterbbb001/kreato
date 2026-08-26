@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kreato — Avtomatik Slayd</title>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-md w-full bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
+        <h1 class="text-2xl font-bold text-center text-indigo-400 mb-4">Kreato</h1>
+        <p class="text-sm text-slate-400 mb-6 text-center">Mavzu va ismingizni kiriting, 5 soniyada ultra-slayd tayyor bo'ladi.</p>
+        
+        <div class="space-y-4">
+            <div>
+                <label class="block text-xs font-semibold mb-1 text-slate-300">Taqdimot mavzusi</label>
+                <input type="text" id="topic" placeholder="Masalan: Fizika va Texnika" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold mb-1 text-slate-300">Ism va familiyangiz</label>
+                <input type="text" id="author" placeholder="Masalan: Boburbek Baxtiyorov" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+            </div>
+            <button onclick="generatePPTX()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-600/30">
+                Slaydni Yuklab Olish (5,000 UZS)
+            </button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
