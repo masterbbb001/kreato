@@ -3,30 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kreato — Avtomatik Slayd</title>
-    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <title>Kreato — Taqdimotlar Kelajagi</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <style>
+        body {
+            background-color: #030712;
+            color: #f9fafb;
+            font-family: system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+        /* Neon Mesh & Glassmorphism */
+        .glow-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; h-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, rgba(147, 51, 234, 0.25), transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.25), transparent 40%),
+                        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15), transparent 50%);
+            z-index: -1;
+            filter: blur(60px);
+        }
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(31, 41, 55, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-btn {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+            transition: all 0.3s ease;
+        }
+        .glow-btn:hover {
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.7);
+            transform: scale(1.02);
+        }
+    </style>
 </head>
-<body class="bg-slate-900 text-white flex items-center justify-center min-h-screen p-4">
-    <div class="max-w-md w-full bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
-        <h1 class="text-2xl font-bold text-center text-indigo-400 mb-4">Kreato</h1>
-        <p class="text-sm text-slate-400 mb-6 text-center">Mavzu va ismingizni kiriting, 5 soniyada ultra-slayd tayyor bo'ladi.</p>
-        
-        <div class="space-y-4">
-            <div>
-                <label class="block text-xs font-semibold mb-1 text-slate-300">Taqdimot mavzusi</label>
-                <input type="text" id="topic" placeholder="Masalan: Fizika va Texnika" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+<body class="min-h-screen flex flex-col justify-between">
+
+    <div class="glow-bg"></div>
+
+    <!-- 1. LANDING PAGE SECTION -->
+    <div id="landing-page" class="w-full flex flex-col min-h-screen">
+        <!-- Floating Header -->
+        <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl glass-panel rounded-2xl px-6 py-3 flex justify-between items-center z-50 shadow-2xl">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center font-black text-xl text-white shadow-lg">K</div>
+                <span class="font-bold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">Kreato</span>
             </div>
-            <div>
-                <label class="block text-xs font-semibold mb-1 text-slate-300">Ism va familiyangiz</label>
-                <input type="text" id="author" placeholder="Masalan: Boburbek Baxtiyorov" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+            <nav class="hidden md:flex gap-8 text-sm text-gray-300 font-medium">
+                <a href="#" class="hover:text-purple-400 transition">Galereya</a>
+                <a href="#" class="hover:text-purple-400 transition">Imkoniyatlar</a>
+                <a href="#" class="hover:text-purple-400 transition">Narxlar</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="text-sm font-medium hover:text-purple-400 transition">Kirish</button>
+                <button onclick="openWorkspace()" class="glow-btn bg-gradient-to-r from-purple-600 to-cyan-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl">Kosmosga kirish</button>
             </div>
-            <button onclick="generatePPTX()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-600/30">
-                Slaydni Yuklab Olish (5,000 UZS)
+        </header>
+
+        <!-- Hero Section -->
+        <main class="flex-1 flex flex-col items-center justify-center text-center pt-32 pb-16 px-4 max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
+                Taqdimotlar kelajagiga qadam qoʻying. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400">Oddiylikdan voz keching.</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-2xl mb-10">
+                Sun'iy intellekt va kinematik dizayn birlashgan platforma. Soniyalar ichida yuqori sifatli slaydlar va o'quv materiallarini yarating.
+            </p>
+
+            <button onclick="openWorkspace()" class="glow-btn group relative bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 p-[2px] rounded-2xl mb-16">
+                <div class="bg-gray-950/80 backdrop-blur-xl px-8 py-5 rounded-[14px] flex items-center gap-4">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 text-transparent bg-clip-text">+ Yangi Loyiha Yaratish</span>
+                </div>
             </button>
-        </div>
+        </main>
     </div>
+
+    <!-- 2. WORKSPACE SECTION (Sehrgarlik Xonasi) -->
+    <div id="workspace-page" class="hidden fixed inset-0 bg-[#030712] flex-col z-50">
+        <!-- Workspace Header -->
+        <header class="h-14 glass-panel border-b border-gray-800 px-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <button onclick="closeWorkspace()" class="text-gray-400 hover:text-white transition">← Orqaga</button>
+                <input type="text" id="project-title" value="Elektr sig'im va ulash usullari" class="bg-transparent font-semibold text-sm focus:outline-none focus:border-b border-purple-500 px-1 py-0.5 text-gray-200">
+                <span class="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-800">
+                    <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Saqlandi
+                </span>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="px-3 py-1.5 text-xs font-medium glass-card rounded-lg hover:bg-gray-800">👁️ Ko'rish</button>
+                <button class="px-3 py-1.5 text-xs font-medium glass-card rounded-lg hover:bg-gray-800">🔗 Ulashish</button>
+                <button onclick="generatePPTX()" class="glow-btn px-4 py-1.5 text-xs font-bold bg-gradient-to-r from-purple-600 to-cyan-500 rounded-lg text-white">⚡ Eksport (5,000 UZS)</button>
+            </div>
+        </header>
+
+        <!-- Workspace Grid (4 blok) -->
+        <div class="flex-1 grid grid-cols-12 gap-2 p-2 overflow-hidden">
+            <!-- A. Chap Asboblar Paneli -->
+            <aside class="col-span-2 glass-panel rounded-xl p-3 flex flex-col gap-2">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Asboblar</span>
+                <button class="glass-card p-2.5 rounded-lg text-left text-xs hover:border-purple-500/50 flex items-center gap-2">🎨 Shablonlar</button>
+                <button class="glass-card p-2.5 rounded-lg text-left text-xs hover:border-purple-500/50 flex items-center gap-2">📐 Arxitektura</button>
+                <button class="glass-card p-2.5 rounded-lg text-left text-xs hover:border-purple-500/50 flex items-center gap-2">✍️ Tipografika</button>
+                <button class="glass-card p-2.5 rounded-lg text-left text-xs hover:border-purple-500/50 flex items-center gap-2">🎬 Media 4K</button>
+                <button class="glass-card p-2.5 rounded-lg text-left text-xs hover:border-purple-500/50 flex items-center gap-2">📊 Pro Grafiklar</button>
+            </aside>
+
+            <!-- B. Markaziy Ishchi Maydon (Canvas) -->
+            <main class="col-span-7 glass-panel rounded-xl p-6 flex items-center justify-center relative overflow-hidden">
+                <!-- Slayd Maketi -->
+                <div class="w-full aspect-video glass-card rounded-2xl border border-purple-500/30 p-8 flex flex-col justify-between shadow-2xl relative">
+                    <div class="space-y-3">
+                        <div class="inline-block px-3 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full border border-purple-500/30">Fizika — 10-Sinf</div>
+                        <h2 id="slide-display-title" class="text-2xl font-black text-white">Elektr sig'im va ulash usullari</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-900/60 p-4 rounded-xl border border-gray-800">
+                            <h4 class="text-xs font-bold text-cyan-400 mb-1">Ketma-ket ulash</h4>
+                            <p class="text-[11px] text-gray-400">1/C = 1/C1 + 1/C2 + ... + 1/Cn</p>
+                        </div>
+                        <div class="bg-gray-900/60 p-4 rounded-xl border border-gray-800">
+                            <h4 class="text-xs font-bold text-emerald-400 mb-1">Parallel ulash</h4>
+                            <p class="text-[11px] text-gray-400">C = C1 + C2 + ... + Cn</p>
+                        </div>
+                    </div>
+                    <div class="text-right text-xs text-gray-500" id="slide-display-author">Muallif: Boburbek Baxtiyorov</div>
+                </div>
+            </main>
+
+            <!-- C. O'ng AI & Kinematika Paneli -->
+            <aside class="col-span-3 glass-panel rounded-xl p-3 flex flex-col gap-4">
+                <div>
+                    <span class="text-xs font-bold text-purple-400 flex items-center gap-1 mb-2">✨ AI Power Generator</span>
+                    <input type="text" id="author-input" placeholder="Ismingizni kiriting" value="Boburbek Baxtiyorov" class="w-full bg-gray-900/80 border border-gray-700 rounded-lg p-2 text-xs mb-2 text-white focus:outline-none focus:border-purple-500">
+                    <button class="w-full glow-btn bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded-lg text-xs">Uslubni AI bilan yangilash</button>
+                </div>
+                <hr class="border-gray-800">
+                <div>
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2">Kinematik O'tishlar</span>
+                    <div class="space-y-1.5">
+                        <div class="p-2 glass-card rounded-lg text-xs hover:border-cyan-500 cursor-pointer flex justify-between"><span>🎥 3D Kamera Aylanishi</span><span class="text-gray-500">Pro</span></div>
+                        <div class="p-2 glass-card rounded-lg text-xs hover:border-cyan-500 cursor-pointer flex justify-between"><span>🔍 Deep Zoom</span><span class="text-gray-500">Pro</span></div>
+                        <div class="p-2 glass-card rounded-lg text-xs hover:border-cyan-500 cursor-pointer flex justify-between"><span>💧 Suyuqlik Effekti</span><span class="text-gray-500">Pro</span></div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- D. Pastki Slaydlar Lentasi -->
+        <footer class="h-20 glass-panel border-t border-gray-800 p-2 flex items-center gap-3 overflow-x-auto">
+            <div class="h-16 aspect-video glass-card rounded-lg border-2 border-purple-500 flex items-center justify-center text-[10px] text-purple-300 font-bold">1-Slayd</div>
+            <div class="h-16 aspect-video glass-card rounded-lg flex items-center justify-center text-[10px] text-gray-500">2-Slayd</div>
+            <div class="h-16 aspect-video glass-card rounded-lg flex items-center justify-center text-[10px] text-gray-500">3-Slayd</div>
+            <button class="h-16 w-12 glass-card rounded-lg border-dashed border-gray-700 hover:border-purple-500 flex items-center justify-center text-gray-400 font-bold">+</button>
+        </footer>
+    </div>
+
     <script src="app.js"></script>
+    <script>
+        function openWorkspace() {
+            document.getElementById('landing-page').classList.add('hidden');
+            document.getElementById('workspace-page').classList.remove('hidden');
+            document.getElementById('workspace-page').classList.add('flex');
+        }
+        function closeWorkspace() {
+            document.getElementById('workspace-page').classList.add('hidden');
+            document.getElementById('workspace-page').classList.remove('flex');
+            document.getElementById('landing-page').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
-
